@@ -1,0 +1,292 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#35c8f1">
+<title>Swift MC — Minecraft Lifesteal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito:wght@800;900;1000&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#21c8f2;--deep:#064c7c;--gold:#ffe12d;--ink:#173c54}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Nunito,system-ui,sans-serif}
+body{overflow-x:hidden;background:#36c9ee;color:#fff}
+.scene{position:relative;isolation:isolate;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 18px 36px;overflow:hidden;background:linear-gradient(180deg,#31b9e8 0%,#7ce5f8 57%,#f7dc75 100%)}
+.world-art{position:absolute;z-index:-5;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.56;filter:saturate(1.1)}
+.sky-rays{position:absolute;z-index:-4;inset:-35%;pointer-events:none;background:repeating-conic-gradient(from 0deg at 50% 44%,#fff0 0deg 10deg,#fff2 10deg 15deg,#fff0 15deg 25deg);animation:rays 70s linear infinite}
+.sky-glow{position:absolute;z-index:-3;top:8%;left:50%;width:min(80vw,1050px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#e8ffff73 0%,#8ff0ff35 38%,transparent 70%);pointer-events:none}
+.cloud{position:absolute;z-index:-2;width:180px;height:46px;border-radius:50px;background:#eaffff9c;filter:drop-shadow(0 6px 0 #8dddf34d);animation:drift linear infinite;pointer-events:none}
+.cloud:before,.cloud:after{content:"";position:absolute;bottom:12px;background:inherit;border-radius:50%}
+.cloud:before{width:74px;height:74px;left:28px}
+.cloud:after{width:58px;height:58px;left:86px;bottom:16px}
+.c1{top:25%;left:-220px;animation-duration:42s}
+.c2{top:44%;left:-240px;transform:scale(.72);animation-duration:55s;animation-delay:-19s}
+.c3{top:18%;left:-200px;transform:scale(.55);animation-duration:65s;animation-delay:-35s}
+.island{position:absolute;z-index:-1;width:150px;height:55px;background:linear-gradient(180deg,#72d77c 0 20%,#9fdf75 20% 31%,#b68a50 31% 100%);clip-path:polygon(0 15%,24% 0,38% 13%,62% 3%,82% 15%,100% 11%,83% 42%,72% 100%,32% 82%,19% 48%);filter:drop-shadow(0 12px 6px #064b7033);animation:float 6s ease-in-out infinite}
+.island:after{content:"";position:absolute;left:38%;top:44%;width:5px;height:45px;background:#43dcff;box-shadow:0 18px 8px #6ceaff}
+.i1{left:4%;top:27%;transform:scale(1.1);animation-delay:-2s}
+.i2{right:5%;top:30%;transform:scale(.9);animation-delay:-4s}
+.i3{left:18%;top:14%;transform:scale(.56);animation-delay:-1s}
+.i4{right:19%;top:17%;transform:scale(.62);animation-delay:-3s}
+.top-pill{position:relative;z-index:2;display:flex;align-items:center;gap:9px;padding:10px 19px;border:1px solid #ffffff7a;border-radius:999px;background:#ffffff29;box-shadow:inset 0 1px 0 #ffffff65,0 8px 24px #0776a52b;backdrop-filter:blur(8px);font-size:clamp(11px,1.1vw,15px);font-weight:1000;white-space:nowrap;text-shadow:0 1px 2px #13628a35;cursor:pointer;color:#fff;font-family:inherit}
+.online{color:#fff5a0}
+.dot{width:9px;height:9px;border-radius:50%;background:#6aff8b;box-shadow:0 0 12px #6aff8b}
+.brand{position:relative;z-index:1;margin:clamp(25px,5vh,60px) 0 28px;text-align:center;animation:brand-in .8s cubic-bezier(.2,.8,.2,1) both}
+.brand-mark{font-family:"Luckiest Guy",Impact,sans-serif;font-size:clamp(58px,10vw,154px);letter-spacing:.015em;line-height:.84;color:#fff;-webkit-text-stroke:2px #123d58;text-shadow:0 5px 0 #1a5877,0 9px 0 #083a60,0 13px 0 #052d4b,0 18px 20px #06446673,4px 4px 0 #0c5c7c;filter:drop-shadow(0 0 18px #e3ffff77)}
+.brand-mark .swift{color:#b7f8ff;background:linear-gradient(180deg,#fff 0%,#a7f8ff 32%,#24c9f3 64%,#078ac6 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.brand-mark .mc{color:#fff;background:linear-gradient(180deg,#fff 0%,#fff 65%,#c8f3ff 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.crown{font-size:clamp(26px,4vw,55px);display:block;line-height:1;color:#ffe65a;text-shadow:0 3px 0 #936a17,0 5px 0 #123d58;margin-bottom:5px;animation:crown-bob 3s ease-in-out infinite}
+.tagline{font-weight:1000;letter-spacing:.32em;font-size:clamp(11px,1.5vw,19px);text-shadow:0 3px 0 #06486b;margin-top:20px}
+.menu{z-index:2;width:min(100%,1120px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,2vw,24px);margin:4px auto 0}
+.menu-card{--accent:#1fdaf5;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;min-width:0;padding:10px 6px 12px;text-decoration:none;color:#fff;border:2px solid #ffffff6e;border-radius:20px;background:linear-gradient(180deg,#ffffff36,#ffffff14);box-shadow:inset 0 1px 0 #ffffff8a,0 7px 0 #0875a53b,0 12px 25px #075d8a1f;backdrop-filter:blur(7px);transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .2s ease;cursor:pointer}
+.menu-card:hover,.menu-card:focus-visible{transform:translateY(-10px) scale(1.035);background:linear-gradient(180deg,#fff9,#ffffff3d);border-color:var(--accent);box-shadow:inset 0 1px 0 #fff,0 7px 0 color-mix(in srgb,var(--accent) 60%,#0b6790),0 0 24px color-mix(in srgb,var(--accent) 65%,transparent);outline:none}
+.menu-card:active{transform:translateY(-2px) scale(.98)}
+.menu-card .icon{height:clamp(53px,6.8vw,86px);display:grid;place-items:center;font-size:clamp(36px,4.8vw,61px);filter:drop-shadow(0 4px 0 #073b5d88);transition:transform .2s}
+.menu-card:hover .icon{transform:translateY(-3px) rotate(-4deg) scale(1.1)}
+.menu-card .label{font-family:"Luckiest Guy",Impact,sans-serif;font-size:clamp(14px,1.65vw,24px);letter-spacing:.02em;color:#fff3a4;-webkit-text-stroke:.45px #533c0c;text-shadow:0 2px 0 #9a6711,0 4px 0 #1b4b65,0 5px 6px #174f6a8a;text-align:center}
+.menu-card .desc{font-size:clamp(9px,.85vw,12px);font-weight:900;line-height:1.25;text-align:center;color:#f6ffff;text-shadow:0 1px 3px #14516e7a;min-height:28px}
+.menu-card .arrow{width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#073c57;font-size:17px;font-weight:1000;box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 45%,#07506e);transition:transform .2s}
+.menu-card:hover .arrow{transform:translateX(3px)}
+.news{--accent:#38eaff}
+.discord{--accent:#c39aff}
+
+.store{--accent:#38f3ff}
+.staff{--accent:#ff7b75}
+.rules{--accent:#8cff9b}
+.bottom-note{z-index:1;margin-top:clamp(20px,4vh,40px);padding:10px 16px;border-radius:999px;border:1px solid #ffffff61;background:#0b8cba32;backdrop-filter:blur(6px);font-size:clamp(10px,1vw,13px);font-weight:900;text-align:center;text-shadow:0 1px 2px #06466b}
+.bottom-note strong{color:#fff4a0}
+.toast{position:fixed;z-index:10;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:calc(100vw - 28px);padding:13px 18px;border:1px solid #aaf8ff;border-radius:14px;background:#06466ff2;color:white;font-size:14px;font-weight:900;line-height:1.4;box-shadow:0 10px 30px #003b5a55;text-align:center;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes drift{from{translate:0 0}to{translate:calc(100vw + 400px) 0}}
+@keyframes float{0%,100%{margin-top:0}50%{margin-top:16px}}
+@keyframes rays{to{transform:rotate(360deg)}}
+@keyframes crown-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
+@keyframes brand-in{from{opacity:0;transform:translateY(22px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){
+.scene{justify-content:flex-start;padding:24px 12px 25px;min-height:100svh}
+.brand{margin:8vh 0 6vh}
+.menu{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:540px}
+.menu-card{padding:10px 5px 12px;border-radius:16px}
+.menu-card .icon{height:55px;font-size:42px}
+.menu-card .label{font-size:19px}
+.menu-card .desc{font-size:10px;min-height:25px}
+.top-pill{margin-top:4px}
+.i1{left:-4%;top:22%}
+.i2{right:-7%;top:36%}
+.i3{left:2%;top:65%}
+.i4{right:0;top:68%}
+.bottom-note{margin-top:24px;line-height:1.5}
+}
+@media(max-width:380px){
+.menu{gap:8px}
+.menu-card .icon{font-size:36px;height:47px}
+.menu-card .label{font-size:16px}
+.menu-card .desc{font-size:9px}
+.brand-mark{font-size:56px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+.rules-overlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:18px;background:#031126df;backdrop-filter:blur(9px);line-height:1.5}
+.rules-overlay.open{display:flex}
+.rules-panel{position:relative;width:min(900px,100%);max-height:min(88vh,900px);overflow:auto;padding:clamp(20px,4vw,38px);border:1px solid #42dfff88;border-radius:24px;background:linear-gradient(145deg,#0a2850f7,#04152df7);box-shadow:0 0 0 1px #ffffff0b inset,0 20px 80px #0009,0 0 40px #00bfff20;color:#eaf8ff}
+.rules-close{position:sticky;top:0;float:right;z-index:2;width:38px;height:38px;border:1px solid #6be7ff66;border-radius:12px;background:#0b3158;color:#fff;font-size:18px;font-weight:900;cursor:pointer}
+.rules-kicker{color:#63eaff;font-size:11px;font-weight:1000;letter-spacing:.2em}
+.rules-panel h1{margin:8px 44px 8px 0;font-size:clamp(25px,4vw,40px);line-height:1.15;color:#fff;text-shadow:0 0 22px #00c8ff55}
+.rules-intro{margin:0 0 24px;color:#b9d9f0}
+.rules-section{margin:16px 0;padding:18px 20px;border:1px solid #5acfff30;border-radius:16px;background:linear-gradient(120deg,#0c2c4eaa,#08203b88)}
+.rules-section h2{margin:0 0 12px;color:#6ceaff;font-size:clamp(16px,2.5vw,20px);letter-spacing:.04em}
+.rules-section ul{margin:0;padding-left:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px}
+.rules-section li{padding-left:2px;color:#e1f0fc;font-size:14px;line-height:1.45}
+.rules-section li::marker{color:#4ce2ff}
+.rules-footer{margin:20px 0 0;padding:15px 17px;border-left:3px solid #ffdc55;border-radius:0 12px 12px 0;background:#ffe35b10;color:#ffeaa0;font-size:13px}
+body.rules-open{overflow:hidden}
+@media(max-width:650px){.rules-overlay{padding:9px}.rules-panel{padding:18px 14px;border-radius:18px;max-height:92vh}.rules-section{padding:15px 14px}.rules-section ul{grid-template-columns:1fr;gap:7px}.rules-section li{font-size:13px}}
+
+</style>
+</head>
+<body>
+<main class="scene">
+  <div class="sky-rays"></div>
+  <div class="sky-glow"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="island i1"></div>
+  <div class="island i2"></div>
+  <div class="island i3"></div>
+  <div class="island i4"></div>
+
+  <button class="top-pill" id="copy-ip" type="button" title="Click to copy server IP">
+    <span class="dot"></span>
+    <span class="online">SWIFT MC</span>
+    <span>·</span>
+    <span>swiftmc.fun</span>
+    <span>⧉</span>
+  </button>
+
+  <header class="brand">
+    <span class="crown">♛ ✦ ♛</span>
+    <div class="brand-mark"><span class="swift">SWIFT</span> <span class="mc">MC</span></div>
+    <div class="tagline">LIFESTEAL · PLAY · STEAL · SURVIVE</div>
+  </header>
+
+  <nav class="menu" aria-label="Main navigation">
+    <a class="menu-card news coming-card" href="#" data-coming="News">
+      <span class="icon">📰</span>
+      <span class="label">News</span>
+      <span class="desc">COMING SOON</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card discord" href="https://discord.gg/swiftmc" target="_blank" rel="noopener noreferrer">
+      <span class="icon">💬</span>
+      <span class="label">Discord</span>
+      <span class="desc">Join our community</span>
+      <span class="arrow">➜</span>
+    </a>
+<a class="menu-card store coming-card" href="#" data-coming="Store">
+      <span class="icon">🎁</span>
+      <span class="label">Store</span>
+      <span class="desc">COMING SOON</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card staff" href="https://discord.gg/swiftmc" target="_blank" rel="noopener noreferrer">
+      <span class="icon">🛡️</span>
+      <span class="label">Staff</span>
+      <span class="desc">Apply on Discord</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card rules" href="#rules" id="open-rules">
+      <span class="icon">📜</span>
+      <span class="label">Rules</span>
+      <span class="desc">COMING SOON</span>
+      <span class="arrow">➜</span>
+    </a>
+  </nav>
+
+  <div class="bottom-note">
+    JAVA + BEDROCK <span>·</span> SERVER IP: <strong>swiftmc.fun</strong>
+    <span>·</span> PORT: <strong>19132</strong>
+  </div>
+</main>
+
+
+<section class="rules-overlay" id="rules-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rules-title">
+  <div class="rules-panel">
+    <button class="rules-close" id="rules-close" type="button" aria-label="Close rules">✕</button>
+    <div class="rules-kicker">SWIFT MC COMMUNITY GUIDELINES</div>
+    <h1 id="rules-title">⚠ SWIFTMC RULES ⚠</h1>
+    <p class="rules-intro">Welcome to SwiftMC! Please follow the rules below and enjoy the server.</p>
+    <section class="rules-section">
+      <h2>💬 DISCORD RULES</h2>
+      <ul>
+        <li>Always follow Discord's Terms of Service.</li>
+        <li>Avoid pinging staff for no reason.</li>
+        <li>Be respectful towards staff and other users.</li>
+        <li>No discrimination, racism, or hate speech.</li>
+        <li>Do not discuss NSFW, sexual, self-harm, drugs, or controversial topics.</li>
+        <li>Do not joke about another user's racial, sexual, or gender identity.</li>
+        <li>Do not post links, including in DMs.</li>
+        <li>No spamming or flooding chat.</li>
+        <li>No scam links or trolling.</li>
+        <li>No inappropriate avatars, usernames, or statuses.</li>
+        <li>Do not share your or anyone else's personal information.</li>
+        <li>No DDoS, doxxing, or raid threats. These will be taken seriously.</li>
+        <li>No punishment evasion.</li>
+        <li>Use channels for their intended purpose.</li>
+        <li>No self-advertising.</li>
+        <li>Invite rewards are allowed.</li>
+      </ul>
+    </section>
+    <section class="rules-section">
+      <h2>🌍 IN-GAME RULES</h2>
+      <ul>
+        <li>Be respectful towards players and staff.</li>
+        <li>No discrimination, racism, or hate speech.</li>
+        <li>No real-money trading (IRL trading).</li>
+        <li>Do not joke about another user's racial, sexual, or gender identity.</li>
+        <li>No illegal client modifications or hacked clients.</li>
+        <li>No autoclickers or macros.</li>
+        <li>No mods that grant unfair advantages.</li>
+        <li>No item duplication or attempted duplication.</li>
+        <li>No client-side optimisers.</li>
+        <li>No DDoS, doxxing, or raid threats.</li>
+        <li>Do not share your or anyone else's personal information.</li>
+        <li>No punishment evasion.</li>
+        <li>No exploit abuse or bug abuse.</li>
+        <li>No cross-trading.</li>
+        <li>No combat evading.</li>
+      </ul>
+    </section>
+    <section class="rules-section">
+      <h2>🎙 VOICE CHAT RULES</h2>
+      <ul>
+        <li>No voice changers.</li>
+        <li>No obnoxious or extremely loud noises.</li>
+        <li>No slurs, racism, or homophobia.</li>
+        <li>No toxicity (staff discretion applies).</li>
+        <li>No soundboards.</li>
+        <li>No derogatory language.</li>
+      </ul>
+    </section>
+    <p class="rules-footer">This list may not cover every situation. The SwiftMC staff team reserves the right to review cases individually and act at its discretion.</p>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* Cards without live pages show a Coming Soon message. */
+const toast = document.getElementById("toast");
+let toastTimer;
+function notify(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
+}
+document.querySelectorAll("[data-coming]").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    notify(link.dataset.coming + " — Coming Soon!");
+  });
+});
+document.getElementById("copy-ip").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText("swiftmc.fun");
+    notify("Copied swiftmc.fun — Port 19132");
+  } catch {
+    notify("Server IP: swiftmc.fun · Port: 19132");
+  }
+});
+
+const rulesOverlay = document.getElementById("rules-overlay");
+const openRules = document.getElementById("open-rules");
+const closeRules = document.getElementById("rules-close");
+function showRules(){
+  rulesOverlay.classList.add("open");
+  rulesOverlay.setAttribute("aria-hidden","false");
+  document.body.classList.add("rules-open");
+  closeRules.focus();
+}
+function hideRules(){
+  rulesOverlay.classList.remove("open");
+  rulesOverlay.setAttribute("aria-hidden","true");
+  document.body.classList.remove("rules-open");
+  if(openRules) openRules.focus();
+}
+if(openRules) openRules.addEventListener("click", event => {event.preventDefault();showRules();});
+if(closeRules) closeRules.addEventListener("click", hideRules);
+if(rulesOverlay) rulesOverlay.addEventListener("click", event => {if(event.target === rulesOverlay) hideRules();});
+document.addEventListener("keydown", event => {if(event.key === "Escape" && rulesOverlay.classList.contains("open")) hideRules();});
+
+</script>
+</body>
+</html>
