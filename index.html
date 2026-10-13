@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,15 +20,22 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
 .sky-glow{position:absolute;z-index:-3;top:8%;left:50%;width:min(80vw,1050px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#e8ffff73 0%,#8ff0ff35 38%,transparent 70%);pointer-events:none}
 .cloud{position:absolute;z-index:-2;width:180px;height:46px;border-radius:50px;background:#eaffff9c;filter:drop-shadow(0 6px 0 #8dddf34d);animation:drift linear infinite;pointer-events:none}
 .cloud:before,.cloud:after{content:"";position:absolute;bottom:12px;background:inherit;border-radius:50%}
-.cloud:before{width:74px;height:74px;left:28px}.cloud:after{width:58px;height:58px;left:86px;bottom:16px}
-.c1{top:25%;left:-220px;animation-duration:42s}.c2{top:44%;left:-240px;transform:scale(.72);animation-duration:55s;animation-delay:-19s}.c3{top:18%;left:-200px;transform:scale(.55);animation-duration:65s;animation-delay:-35s}
+.cloud:before{width:74px;height:74px;left:28px}
+.cloud:after{width:58px;height:58px;left:86px;bottom:16px}
+.c1{top:25%;left:-220px;animation-duration:42s}
+.c2{top:44%;left:-240px;transform:scale(.72);animation-duration:55s;animation-delay:-19s}
+.c3{top:18%;left:-200px;transform:scale(.55);animation-duration:65s;animation-delay:-35s}
 .island{position:absolute;z-index:-1;width:150px;height:55px;background:linear-gradient(180deg,#72d77c 0 20%,#9fdf75 20% 31%,#b68a50 31% 100%);clip-path:polygon(0 15%,24% 0,38% 13%,62% 3%,82% 15%,100% 11%,83% 42%,72% 100%,32% 82%,19% 48%);filter:drop-shadow(0 12px 6px #064b7033);animation:float 6s ease-in-out infinite}
 .island:after{content:"";position:absolute;left:38%;top:44%;width:5px;height:45px;background:#43dcff;box-shadow:0 18px 8px #6ceaff}
-.i1{left:4%;top:27%;transform:scale(1.1);animation-delay:-2s}.i2{right:5%;top:30%;transform:scale(.9);animation-delay:-4s}.i3{left:18%;top:14%;transform:scale(.56);animation-delay:-1s}.i4{right:19%;top:17%;transform:scale(.62);animation-delay:-3s}
-.top-pill{position:relative;z-index:2;display:flex;align-items:center;gap:9px;padding:10px 19px;border:1px solid #ffffff7a;border-radius:999px;background:#ffffff29;box-shadow:inset 0 1px 0 #ffffff65,0 8px 24px #0776a52b;backdrop-filter:blur(8px);font-size:clamp(11px,1.1vw,15px);font-weight:1000;white-space:nowrap;text-shadow:0 1px 2px #13628a35}
-.online{color:#fff5a0}.dot{width:9px;height:9px;border-radius:50%;background:#6aff8b;box-shadow:0 0 12px #6aff8b}
+.i1{left:4%;top:27%;transform:scale(1.1);animation-delay:-2s}
+.i2{right:5%;top:30%;transform:scale(.9);animation-delay:-4s}
+.i3{left:18%;top:14%;transform:scale(.56);animation-delay:-1s}
+.i4{right:19%;top:17%;transform:scale(.62);animation-delay:-3s}
+.top-pill{position:relative;z-index:2;display:flex;align-items:center;gap:9px;padding:10px 19px;border:1px solid #ffffff7a;border-radius:999px;background:#ffffff29;box-shadow:inset 0 1px 0 #ffffff65,0 8px 24px #0776a52b;backdrop-filter:blur(8px);font-size:clamp(11px,1.1vw,15px);font-weight:1000;white-space:nowrap;text-shadow:0 1px 2px #13628a35;cursor:pointer;color:#fff;font-family:inherit}
+.online{color:#fff5a0}
+.dot{width:9px;height:9px;border-radius:50%;background:#6aff8b;box-shadow:0 0 12px #6aff8b}
 .brand{position:relative;z-index:1;margin:clamp(25px,5vh,60px) 0 28px;text-align:center;animation:brand-in .8s cubic-bezier(.2,.8,.2,1) both}
-.brand-mark{font-family:"Luckiest Guy",Impact,sans-serif;font-size:clamp(58px,10vw,154px);letter-spacing:.015em;line-height:.84;color:#fff; -webkit-text-stroke:2px #123d58;text-shadow:0 5px 0 #1a5877,0 9px 0 #083a60,0 13px 0 #052d4b,0 18px 20px #06446673,4px 4px 0 #0c5c7c;filter:drop-shadow(0 0 18px #e3ffff77)}
+.brand-mark{font-family:"Luckiest Guy",Impact,sans-serif;font-size:clamp(58px,10vw,154px);letter-spacing:.015em;line-height:.84;color:#fff;-webkit-text-stroke:2px #123d58;text-shadow:0 5px 0 #1a5877,0 9px 0 #083a60,0 13px 0 #052d4b,0 18px 20px #06446673,4px 4px 0 #0c5c7c;filter:drop-shadow(0 0 18px #e3ffff77)}
 .brand-mark .swift{color:#b7f8ff;background:linear-gradient(180deg,#fff 0%,#a7f8ff 32%,#24c9f3 64%,#078ac6 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .brand-mark .mc{color:#fff;background:linear-gradient(180deg,#fff 0%,#fff 65%,#c8f3ff 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .crown{font-size:clamp(26px,4vw,55px);display:block;line-height:1;color:#ffe65a;text-shadow:0 3px 0 #936a17,0 5px 0 #123d58;margin-bottom:5px;animation:crown-bob 3s ease-in-out infinite}
@@ -42,7 +50,12 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
 .menu-card .desc{font-size:clamp(9px,.85vw,12px);font-weight:900;line-height:1.25;text-align:center;color:#f6ffff;text-shadow:0 1px 3px #14516e7a;min-height:28px}
 .menu-card .arrow{width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#073c57;font-size:17px;font-weight:1000;box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 45%,#07506e);transition:transform .2s}
 .menu-card:hover .arrow{transform:translateX(3px)}
-.news{--accent:#38eaff}.discord{--accent:#c39aff}.vote{--accent:#ffe04b}.store{--accent:#38f3ff}.staff{--accent:#ff7b75}.rules{--accent:#8cff9b}
+.news{--accent:#38eaff}
+.discord{--accent:#c39aff}
+.vote{--accent:#ffe04b}
+.store{--accent:#38f3ff}
+.staff{--accent:#ff7b75}
+.rules{--accent:#8cff9b}
 .bottom-note{z-index:1;margin-top:clamp(20px,4vh,40px);padding:10px 16px;border-radius:999px;border:1px solid #ffffff61;background:#0b8cba32;backdrop-filter:blur(6px);font-size:clamp(10px,1vw,13px);font-weight:900;text-align:center;text-shadow:0 1px 2px #06466b}
 .bottom-note strong{color:#fff4a0}
 .toast{position:fixed;z-index:10;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:calc(100vw - 28px);padding:13px 18px;border:1px solid #aaf8ff;border-radius:14px;background:#06466ff2;color:white;font-size:14px;font-weight:900;line-height:1.4;box-shadow:0 10px 30px #003b5a55;text-align:center;transition:opacity .2s,transform .2s}
@@ -52,20 +65,52 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
 @keyframes rays{to{transform:rotate(360deg)}}
 @keyframes crown-bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-5px) rotate(2deg)}}
 @keyframes brand-in{from{opacity:0;transform:translateY(22px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media(max-width:760px){.scene{justify-content:flex-start;padding:24px 12px 25px;min-height:100svh}.brand{margin:8vh 0 6vh}.menu{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:540px}.menu-card{padding:10px 5px 12px;border-radius:16px}.menu-card .icon{height:55px;font-size:42px}.menu-card .label{font-size:19px}.menu-card .desc{font-size:10px;min-height:25px}.top-pill{margin-top:4px}.i1{left:-4%;top:22%}.i2{right:-7%;top:36%}.i3{left:2%;top:65%}.i4{right:0;top:68%}.bottom-note{margin-top:24px;line-height:1.5}}
-@media(max-width:380px){.menu{gap:8px}.menu-card .icon{font-size:36px;height:47px}.menu-card .label{font-size:16px}.menu-card .desc{font-size:9px}.brand-mark{font-size:56px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(max-width:760px){
+.scene{justify-content:flex-start;padding:24px 12px 25px;min-height:100svh}
+.brand{margin:8vh 0 6vh}
+.menu{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:540px}
+.menu-card{padding:10px 5px 12px;border-radius:16px}
+.menu-card .icon{height:55px;font-size:42px}
+.menu-card .label{font-size:19px}
+.menu-card .desc{font-size:10px;min-height:25px}
+.top-pill{margin-top:4px}
+.i1{left:-4%;top:22%}
+.i2{right:-7%;top:36%}
+.i3{left:2%;top:65%}
+.i4{right:0;top:68%}
+.bottom-note{margin-top:24px;line-height:1.5}
+}
+@media(max-width:380px){
+.menu{gap:8px}
+.menu-card .icon{font-size:36px;height:47px}
+.menu-card .label{font-size:16px}
+.menu-card .desc{font-size:9px}
+.brand-mark{font-size:56px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+}
 </style>
 </head>
 <body>
 <main class="scene">
   <img class="world-art" src="assets/swiftmc-world-art.png" alt="" aria-hidden="true">
-  <div class="sky-rays"></div><div class="sky-glow"></div>
-  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-  <div class="island i1"></div><div class="island i2"></div><div class="island i3"></div><div class="island i4"></div>
+  <div class="sky-rays"></div>
+  <div class="sky-glow"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="island i1"></div>
+  <div class="island i2"></div>
+  <div class="island i3"></div>
+  <div class="island i4"></div>
 
   <button class="top-pill" id="copy-ip" type="button" title="Click to copy server IP">
-    <span class="dot"></span><span class="online">SWIFT MC</span><span>·</span><span>swiftmc.fun</span><span>⧉</span>
+    <span class="dot"></span>
+    <span class="online">SWIFT MC</span>
+    <span>·</span>
+    <span>swiftmc.fun</span>
+    <span>⧉</span>
   </button>
 
   <header class="brand">
@@ -75,17 +120,57 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
   </header>
 
   <nav class="menu" aria-label="Main navigation">
-    <a class="menu-card news" href="#" data-page="News"><span class="icon">📰</span><span class="label">News</span><span class="desc">Latest server news</span><span class="arrow">➜</span></a>
-    <a class="menu-card discord" href="https://discord.gg/nFV8DzaTb" target="_blank" rel="noopener noreferrer"><span class="icon">💬</span><span class="label">Discord</span><span class="desc">Join our community</span><span class="arrow">➜</span></a>
-    <a class="menu-card vote" href="#" data-page="Vote"><span class="icon">💎</span><span class="label">Vote</span><span class="desc">Earn free rewards</span><span class="arrow">➜</span></a>
-    <a class="menu-card store" href="#" data-page="Store"><span class="icon">🎁</span><span class="label">Store</span><span class="desc">Ranks, coins and keys</span><span class="arrow">➜</span></a>
-    <a class="menu-card staff" href="https://discord.gg/nFV8DzaTb" target="_blank" rel="noopener noreferrer"><span class="icon">🛡️</span><span class="label">Staff</span><span class="desc">Apply on Discord</span><span class="arrow">➜</span></a>
-    <a class="menu-card rules" href="#" data-page="Rules"><span class="icon">📜</span><span class="label">Rules</span><span class="desc">Play fair, have fun</span><span class="arrow">➜</span></a>
+    <a class="menu-card news" href="#" data-page="News">
+      <span class="icon">📰</span>
+      <span class="label">News</span>
+      <span class="desc">Latest server news</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card discord" href="https://discord.gg/swiftmc" target="_blank" rel="noopener noreferrer">
+      <span class="icon">💬</span>
+      <span class="label">Discord</span>
+      <span class="desc">Join our community</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card vote" href="#" data-page="Vote">
+      <span class="icon">💎</span>
+      <span class="label">Vote</span>
+      <span class="desc">Earn free rewards</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card store" href="#" data-page="Store">
+      <span class="icon">🎁</span>
+      <span class="label">Store</span>
+      <span class="desc">Ranks, coins and keys</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card staff" href="https://discord.gg/swiftmc" target="_blank" rel="noopener noreferrer">
+      <span class="icon">🛡️</span>
+      <span class="label">Staff</span>
+      <span class="desc">Apply on Discord</span>
+      <span class="arrow">➜</span>
+    </a>
+
+    <a class="menu-card rules" href="#" data-page="Rules">
+      <span class="icon">📜</span>
+      <span class="label">Rules</span>
+      <span class="desc">Play fair, have fun</span>
+      <span class="arrow">➜</span>
+    </a>
   </nav>
 
-  <div class="bottom-note">JAVA + BEDROCK <span>·</span> SERVER IP: <strong>swiftmc.fun</strong> <span>·</span> PORT: <strong>40503</strong></div>
+  <div class="bottom-note">
+    JAVA + BEDROCK <span>·</span> SERVER IP: <strong>swiftmc.fun</strong>
+    <span>·</span> PORT: <strong>19132</strong>
+  </div>
 </main>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
 /* Replace these placeholder URLs when each destination is ready. */
 const destinations = {
@@ -94,29 +179,37 @@ const destinations = {
   Store: "https://example.com/swiftmc-store",
   Rules: "https://example.com/swiftmc-rules"
 };
+
 const toast = document.getElementById("toast");
 let toastTimer;
+
 function notify(message) {
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
 }
+
 document.querySelectorAll("[data-page]").forEach(link => {
   link.addEventListener("click", event => {
     event.preventDefault();
     const page = link.dataset.page;
     const url = destinations[page];
-    if (url && !url.includes("example.com")) window.location.href = url;
-    else notify(page + " link is temporary. Update its URL in index.html when you're ready.");
+
+    if (url && !url.includes("example.com")) {
+      window.location.href = url;
+    } else {
+      notify(page + " link is temporary. Update its URL in index.html when you're ready.");
+    }
   });
 });
+
 document.getElementById("copy-ip").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText("swiftmc.fun");
-    notify("Copied swiftmc.fun — Port 40503");
+    notify("Copied swiftmc.fun — Port 19132");
   } catch {
-    notify("Server IP: swiftmc.fun · Port: 40503");
+    notify("Server IP: swiftmc.fun · Port: 19132");
   }
 });
 </script>
