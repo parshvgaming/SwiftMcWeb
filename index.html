@@ -40,7 +40,7 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
 .brand-mark .mc{color:#fff;background:linear-gradient(180deg,#fff 0%,#fff 65%,#c8f3ff 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .crown{font-size:clamp(26px,4vw,55px);display:block;line-height:1;color:#ffe65a;text-shadow:0 3px 0 #936a17,0 5px 0 #123d58;margin-bottom:5px;animation:crown-bob 3s ease-in-out infinite}
 .tagline{font-weight:1000;letter-spacing:.32em;font-size:clamp(11px,1.5vw,19px);text-shadow:0 3px 0 #06486b;margin-top:20px}
-.menu{z-index:2;width:min(100%,1120px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,2vw,24px);margin:4px auto 0}
+.menu{z-index:2;width:min(100%,1120px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,2vw,24px);margin:4px auto 0}
 .menu-card{--accent:#1fdaf5;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px;min-width:0;padding:10px 6px 12px;text-decoration:none;color:#fff;border:2px solid #ffffff6e;border-radius:20px;background:linear-gradient(180deg,#ffffff36,#ffffff14);box-shadow:inset 0 1px 0 #ffffff8a,0 7px 0 #0875a53b,0 12px 25px #075d8a1f;backdrop-filter:blur(7px);transition:transform .2s ease,background .2s ease,box-shadow .2s ease,border-color .2s ease;cursor:pointer}
 .menu-card:hover,.menu-card:focus-visible{transform:translateY(-10px) scale(1.035);background:linear-gradient(180deg,#fff9,#ffffff3d);border-color:var(--accent);box-shadow:inset 0 1px 0 #fff,0 7px 0 color-mix(in srgb,var(--accent) 60%,#0b6790),0 0 24px color-mix(in srgb,var(--accent) 65%,transparent);outline:none}
 .menu-card:active{transform:translateY(-2px) scale(.98)}
@@ -52,7 +52,7 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
 .menu-card:hover .arrow{transform:translateX(3px)}
 .news{--accent:#38eaff}
 .discord{--accent:#c39aff}
-.vote{--accent:#ffe04b}
+
 .store{--accent:#38f3ff}
 .staff{--accent:#ff7b75}
 .rules{--accent:#8cff9b}
@@ -90,11 +90,27 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
 @media(prefers-reduced-motion:reduce){
 *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+.rules-overlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:18px;background:#031126df;backdrop-filter:blur(9px);line-height:1.5}
+.rules-overlay.open{display:flex}
+.rules-panel{position:relative;width:min(900px,100%);max-height:min(88vh,900px);overflow:auto;padding:clamp(20px,4vw,38px);border:1px solid #42dfff88;border-radius:24px;background:linear-gradient(145deg,#0a2850f7,#04152df7);box-shadow:0 0 0 1px #ffffff0b inset,0 20px 80px #0009,0 0 40px #00bfff20;color:#eaf8ff}
+.rules-close{position:sticky;top:0;float:right;z-index:2;width:38px;height:38px;border:1px solid #6be7ff66;border-radius:12px;background:#0b3158;color:#fff;font-size:18px;font-weight:900;cursor:pointer}
+.rules-kicker{color:#63eaff;font-size:11px;font-weight:1000;letter-spacing:.2em}
+.rules-panel h1{margin:8px 44px 8px 0;font-size:clamp(25px,4vw,40px);line-height:1.15;color:#fff;text-shadow:0 0 22px #00c8ff55}
+.rules-intro{margin:0 0 24px;color:#b9d9f0}
+.rules-section{margin:16px 0;padding:18px 20px;border:1px solid #5acfff30;border-radius:16px;background:linear-gradient(120deg,#0c2c4eaa,#08203b88)}
+.rules-section h2{margin:0 0 12px;color:#6ceaff;font-size:clamp(16px,2.5vw,20px);letter-spacing:.04em}
+.rules-section ul{margin:0;padding-left:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px}
+.rules-section li{padding-left:2px;color:#e1f0fc;font-size:14px;line-height:1.45}
+.rules-section li::marker{color:#4ce2ff}
+.rules-footer{margin:20px 0 0;padding:15px 17px;border-left:3px solid #ffdc55;border-radius:0 12px 12px 0;background:#ffe35b10;color:#ffeaa0;font-size:13px}
+body.rules-open{overflow:hidden}
+@media(max-width:650px){.rules-overlay{padding:9px}.rules-panel{padding:18px 14px;border-radius:18px;max-height:92vh}.rules-section{padding:15px 14px}.rules-section ul{grid-template-columns:1fr;gap:7px}.rules-section li{font-size:13px}}
+
 </style>
 </head>
 <body>
 <main class="scene">
-  <img class="world-art" src="assets/swiftmc-world-art.png" alt="" aria-hidden="true">
   <div class="sky-rays"></div>
   <div class="sky-glow"></div>
   <div class="cloud c1"></div>
@@ -120,10 +136,10 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
   </header>
 
   <nav class="menu" aria-label="Main navigation">
-    <a class="menu-card news" href="#" data-page="News">
+    <a class="menu-card news coming-card" href="#" data-coming="News">
       <span class="icon">📰</span>
       <span class="label">News</span>
-      <span class="desc">Latest server news</span>
+      <span class="desc">COMING SOON</span>
       <span class="arrow">➜</span>
     </a>
 
@@ -133,18 +149,10 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
       <span class="desc">Join our community</span>
       <span class="arrow">➜</span>
     </a>
-
-    <a class="menu-card vote" href="#" data-page="Vote">
-      <span class="icon">💎</span>
-      <span class="label">Vote</span>
-      <span class="desc">Earn free rewards</span>
-      <span class="arrow">➜</span>
-    </a>
-
-    <a class="menu-card store" href="#" data-page="Store">
+<a class="menu-card store coming-card" href="#" data-coming="Store">
       <span class="icon">🎁</span>
       <span class="label">Store</span>
-      <span class="desc">Ranks, coins and keys</span>
+      <span class="desc">COMING SOON</span>
       <span class="arrow">➜</span>
     </a>
 
@@ -155,10 +163,10 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
       <span class="arrow">➜</span>
     </a>
 
-    <a class="menu-card rules" href="#" data-page="Rules">
+    <a class="menu-card rules" href="#rules" id="open-rules">
       <span class="icon">📜</span>
       <span class="label">Rules</span>
-      <span class="desc">Play fair, have fun</span>
+      <span class="desc">COMING SOON</span>
       <span class="arrow">➜</span>
     </a>
   </nav>
@@ -169,41 +177,87 @@ body{overflow-x:hidden;background:#36c9ee;color:#fff}
   </div>
 </main>
 
+
+<section class="rules-overlay" id="rules-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="rules-title">
+  <div class="rules-panel">
+    <button class="rules-close" id="rules-close" type="button" aria-label="Close rules">✕</button>
+    <div class="rules-kicker">SWIFT MC COMMUNITY GUIDELINES</div>
+    <h1 id="rules-title">⚠ SWIFTMC RULES ⚠</h1>
+    <p class="rules-intro">Welcome to SwiftMC! Please follow the rules below and enjoy the server.</p>
+    <section class="rules-section">
+      <h2>💬 DISCORD RULES</h2>
+      <ul>
+        <li>Always follow Discord's Terms of Service.</li>
+        <li>Avoid pinging staff for no reason.</li>
+        <li>Be respectful towards staff and other users.</li>
+        <li>No discrimination, racism, or hate speech.</li>
+        <li>Do not discuss NSFW, sexual, self-harm, drugs, or controversial topics.</li>
+        <li>Do not joke about another user's racial, sexual, or gender identity.</li>
+        <li>Do not post links, including in DMs.</li>
+        <li>No spamming or flooding chat.</li>
+        <li>No scam links or trolling.</li>
+        <li>No inappropriate avatars, usernames, or statuses.</li>
+        <li>Do not share your or anyone else's personal information.</li>
+        <li>No DDoS, doxxing, or raid threats. These will be taken seriously.</li>
+        <li>No punishment evasion.</li>
+        <li>Use channels for their intended purpose.</li>
+        <li>No self-advertising.</li>
+        <li>Invite rewards are allowed.</li>
+      </ul>
+    </section>
+    <section class="rules-section">
+      <h2>🌍 IN-GAME RULES</h2>
+      <ul>
+        <li>Be respectful towards players and staff.</li>
+        <li>No discrimination, racism, or hate speech.</li>
+        <li>No real-money trading (IRL trading).</li>
+        <li>Do not joke about another user's racial, sexual, or gender identity.</li>
+        <li>No illegal client modifications or hacked clients.</li>
+        <li>No autoclickers or macros.</li>
+        <li>No mods that grant unfair advantages.</li>
+        <li>No item duplication or attempted duplication.</li>
+        <li>No client-side optimisers.</li>
+        <li>No DDoS, doxxing, or raid threats.</li>
+        <li>Do not share your or anyone else's personal information.</li>
+        <li>No punishment evasion.</li>
+        <li>No exploit abuse or bug abuse.</li>
+        <li>No cross-trading.</li>
+        <li>No combat evading.</li>
+      </ul>
+    </section>
+    <section class="rules-section">
+      <h2>🎙 VOICE CHAT RULES</h2>
+      <ul>
+        <li>No voice changers.</li>
+        <li>No obnoxious or extremely loud noises.</li>
+        <li>No slurs, racism, or homophobia.</li>
+        <li>No toxicity (staff discretion applies).</li>
+        <li>No soundboards.</li>
+        <li>No derogatory language.</li>
+      </ul>
+    </section>
+    <p class="rules-footer">This list may not cover every situation. The SwiftMC staff team reserves the right to review cases individually and act at its discretion.</p>
+  </div>
+</section>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-/* Replace these placeholder URLs when each destination is ready. */
-const destinations = {
-  News: "https://example.com/swiftmc-news",
-  Vote: "https://example.com/swiftmc-vote",
-  Store: "https://example.com/swiftmc-store",
-  Rules: "https://example.com/swiftmc-rules"
-};
-
+/* Cards without live pages show a Coming Soon message. */
 const toast = document.getElementById("toast");
 let toastTimer;
-
 function notify(message) {
   toast.textContent = message;
   toast.classList.add("show");
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
 }
-
-document.querySelectorAll("[data-page]").forEach(link => {
+document.querySelectorAll("[data-coming]").forEach(link => {
   link.addEventListener("click", event => {
     event.preventDefault();
-    const page = link.dataset.page;
-    const url = destinations[page];
-
-    if (url && !url.includes("example.com")) {
-      window.location.href = url;
-    } else {
-      notify(page + " link is temporary. Update its URL in index.html when you're ready.");
-    }
+    notify(link.dataset.coming + " — Coming Soon!");
   });
 });
-
 document.getElementById("copy-ip").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText("swiftmc.fun");
@@ -212,6 +266,27 @@ document.getElementById("copy-ip").addEventListener("click", async () => {
     notify("Server IP: swiftmc.fun · Port: 19132");
   }
 });
+
+const rulesOverlay = document.getElementById("rules-overlay");
+const openRules = document.getElementById("open-rules");
+const closeRules = document.getElementById("rules-close");
+function showRules(){
+  rulesOverlay.classList.add("open");
+  rulesOverlay.setAttribute("aria-hidden","false");
+  document.body.classList.add("rules-open");
+  closeRules.focus();
+}
+function hideRules(){
+  rulesOverlay.classList.remove("open");
+  rulesOverlay.setAttribute("aria-hidden","true");
+  document.body.classList.remove("rules-open");
+  if(openRules) openRules.focus();
+}
+if(openRules) openRules.addEventListener("click", event => {event.preventDefault();showRules();});
+if(closeRules) closeRules.addEventListener("click", hideRules);
+if(rulesOverlay) rulesOverlay.addEventListener("click", event => {if(event.target === rulesOverlay) hideRules();});
+document.addEventListener("keydown", event => {if(event.key === "Escape" && rulesOverlay.classList.contains("open")) hideRules();});
+
 </script>
 </body>
 </html>
